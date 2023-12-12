@@ -10,7 +10,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       descricao: {
-        type: Sequelize.STRING
+        allowNull: false,
+        type: Sequelize.STRING,
+        validate: {
+          notEmpt: {msg: "Campo de descrição não pode ser vazio"}
+        },
       },
       createdAt: {
         allowNull: false,

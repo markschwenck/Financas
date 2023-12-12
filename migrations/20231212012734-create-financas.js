@@ -9,22 +9,50 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      
       data: {
-        type: Sequelize.DATE
+        allowNull: false,
+        type: Sequelize.DATE,
+        validate:{
+          notEmpt: {msg: "Campo data não pode ser vazio"}
+        }
       },
-      categoria_id: {
-        type: Sequelize.INTEGER
+      
+      categoria_id:{
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        validate:{
+          notEmpt:{msg: "Campo categoria não pode ser vazio"} 
+        },
+        references:{
+          model:"Categoria",
+          key:"id"
+        },
+        onUpdate:'cascade',
+        onDelete:'cascade'
       },
+      
       titulo: {
-        type: Sequelize.STRING
+        allowNull: false,
+        type: Sequelize.STRING,
+        validate: {
+          notEmpt: {msg: "Campo titulo não pode ser vazio"} 
+        }
       },
+      
       valor: {
-        type: Sequelize.DOUBLE
+        allowNull: false,
+        type: Sequelize.DOUBLE,
+        validate:{
+          notEmpt: {msg: "Campo valor não pode ser vazio"}
+        }
       },
+      
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
+      
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
